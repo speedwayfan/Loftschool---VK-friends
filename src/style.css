@@ -1,0 +1,106 @@
+.container{
+    width: 720px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: sans-serif;    
+}
+
+.main__title{
+	background: #fc8f5b;
+    color: #fff;
+    margin: 0;
+    padding: 10px;
+}
+
+.main__block{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+}
+
+.left__block, .right__block{
+	justify-content: space-between;
+    flex-grow: 1;
+    width: 50%;
+}
+
+.div__input{
+    background: #d7d7d7;
+    position: relative;
+}
+
+.input__search1, .input__search2{
+	width: 95%;
+    margin: 5px;
+    border-radius: 7px;
+    border: 1px solid grey;
+}
+
+.loupe{
+    position: absolute;
+    right: 14px;
+    top: 3px;
+    color: grey;
+}
+
+.friend__title{
+	margin: 0;
+    border: 1px solid #d7d7d7;
+    padding: 10px;
+}
+
+.friend__list1, .friend__list2{
+    list-style-type: none;
+    padding: 0 5px;
+    margin: 0;
+	height: 350px;
+    overflow: auto;
+}
+
+.friend {
+    padding: 7px 5px;
+    border-bottom: 1px solid #d7d7d7;
+    display: flex;
+    align-items: center;
+}
+
+.friend:hover{
+    background: #d7d7d761;
+}
+
+.friend img {
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+/* стили сработают на ближайшем span, следующим после img */
+img + span {
+    flex-grow: 1;
+}
+
+.footer{
+    text-align: right;
+    line-height: 40px;
+    background: #efefef;
+}
+
+.button__save{
+	margin-right: 10px;
+    background: #fc8f5b;
+    color: #fff;
+    border: none;
+    padding: 4px 7px;
+    border-radius: 5px;
+}
+
+
+.plus, .smallCross{
+    font-weight: 900;
+    color: grey;
+    flex-grow: 0;
+    cursor: pointer;
+}
