@@ -99,6 +99,14 @@ if (localStorage.data) {
     }
 
 
+///////////////////////////// ФУНКЦИЯ LOCALSTORAGE /////////////////////////////
+
+// в глобальном объекте localStorage можно сохранить только строку, поэтому с помощью json нужно перевести объект с инфо
+buttonSave.addEventListener('click', function() {
+    localStorage.data = JSON.stringify(friends);
+})
+
+
 ///////////////////////// ФУНКЦИЯ КРЕСТИК И ПЛЮСИК /////////////////////////////
 
 friendList1.addEventListener('click', function(e) {
@@ -156,26 +164,39 @@ document.addEventListener('dragover', (e) => {
 });
 
 document.addEventListener('drop', (e) => {
-    // e.target - здесь зона надо которой отпускаем элемент
-    // currentDrag - объект с значениями старт-зона и взятый элемент
+    // e.target - здесь зона над которой отпускаем элемент
+    // currentDrag - объект с значениями старт-зона + взятый элемент
     if (currentDrag) {
         const zone = getCurrentZone(e.target);
         // zone - это ul с текущим списком друзей, e.target - перетаскиваемый div
         e.preventDefault();
-        if (e.target.closest('.friend__list2')) {
-            const id = currentDrag.node.closest('.friend').dataset.id;
-            // обращаемся к дата-атрибуту
-            friends = friends.map(item => {
-                if (item.id == id) {
-                    return Object.assign(item, {selected: true});
-                }
-                
-                return item;
-            })
+        // if (zone && currentDrag.zone !== zone) {
+            if (e.target.closest('.friend__list2')) {
+                const id = currentDrag.node.closest('.friend').dataset.id;
+                // обращаемся к дата-атрибуту
+                friends = friends.map(item => {
+                    if (item.id == id) {
+                        return Object.assign(item, {selected: true});
+                    }
+                    
+                    return item;
+                })
 
-            createFriends(friends);
-        }
+                createFriends(friends);
+            } else {
+                const id = currentDrag.node.closest('.friend').dataset.id;
+                // обращаемся к дата-атрибуту
+                friends = friends.map(item => {
+                    if (item.id == id) {
+                        return Object.assign(item, {selected: true});
+                    }
+                    
+                    return item;
+                })
 
+                createFriends(friends);
+            }
+        // }
         currentDrag = null;
     }
 });
@@ -192,32 +213,8 @@ function getCurrentZone(from) {
 };
 
 
-///////////////////////////// ФУНКЦИЯ LOCALSTORAGE /////////////////////////////
-
-// в глобальном объекте localStorage можно сохранить только строку, поэтому с помощью json нужно перевести объект с инфо
-buttonSave.addEventListener('click', function() {
-    localStorage.data = JSON.stringify(friends);
-})
-
-// Метод setItem(key,value) предназначен для добавления в хранилище элемента с указанным ключом (key) и значением (value)
-// Если в хранилище уже есть элемент с указанным ключом (key), то в этом случае произойдет изменения его значения (value)
-// const savedFriends = localStorage.setItem('friends');
-// localStorage.setItem('friends', JSON.stringify(friends));
-// if (savedFriends) {
-//     friends = JSON.parse(savedFriends);
-//     loadFriends();
-// } else {
-//     createFriends(friends)
-// }
-
-// function loadFriends(friends) {
-//     // в reduce нужно с каждым списком объектов изменить положение selected
-//     friend__list1.innerHTML = friends.filter(i = i.selected == false).reduce(fn)
-//     friend__list2.innerHTML = friends.filter(i = i.selected == true).reduce(fn)
-// }
-
-
 ///////////////////////////// ФУНКЦИЯ FILTER /////////////////////////////
+
 
 filterInput1.addEventListener('input', () => {
     const { value } = filterInput1;
