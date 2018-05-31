@@ -171,7 +171,8 @@ document.addEventListener('drop', (e) => {
         // zone - это ul с текущим списком друзей, e.target - перетаскиваемый div
         e.preventDefault();
         // if (zone && currentDrag.zone !== zone) {
-            if (e.target.closest('.friend__list2')) {
+            if (e.target.closest('.friend__list2') && !e.target.closest('.friend__list1')) {
+                console.log(currentDrag.node)
                 const id = currentDrag.node.closest('.friend').dataset.id;
                 // обращаемся к дата-атрибуту
                 friends = friends.map(item => {
@@ -183,7 +184,7 @@ document.addEventListener('drop', (e) => {
                 })
 
                 createFriends(friends);
-            } else {
+            } else if (!e.target.closest('.friend__list1')) {
                 const id = currentDrag.node.closest('.friend').dataset.id;
                 // обращаемся к дата-атрибуту
                 friends = friends.map(item => {
