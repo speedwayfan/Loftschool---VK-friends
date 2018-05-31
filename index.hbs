@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+    <title>{{htmlWebpackPlugin.options.title}}</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+    <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="src/style.css">
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<div class="container">
+			<h3 class="main__title">Выберите друзей</h3>
+			<div class="main__block">
+				<div class="left__block">
+					<div class="div__input">
+						<input type="text" class="input__search1" placeholder=" Начните вводить имя друга">
+						<span class="loupe">&#128269</span>
+					</div>
+					<h5 class="friend__title">Ваши друзья</h5>
+					<ul class="friend__list1">
+
+					</ul>
+				</div>
+				<div class="right__block">
+					<div class="div__input">
+						<input type="text" class="input__search2" placeholder=" Начните вводить имя друга">
+						<span class="loupe">&#128269</span>
+					</div>
+					<h5 class="friend__title">Друзья в списке</h5>
+					<ul class="friend__list2">						
+
+					</ul>
+				</div>
+			</div>
+			<div class="footer">
+				<button class="button__save">Сохранить</button>
+			</div>
+		</div>
+	</div>
+<!-- браузер воспринимает такую запись не как скрипт, а как текстовое содержимое \/ -->
+<!-- 						<script id="user-template" type="text/x-handlebars-template">
+				            <div class="friends">
+				                {{#each items}}
+				                <div class="friend">
+				                    <img src="{{photo_50}}"/>
+				                    <div>{{first_name}} {{last_name}}</div>
+				                </div>
+				                {{/each}}
+				            </div>
+				        </script>
+ -->
+	<script type="text/javascript" src="src/index.js"></script>
+
+</body>
+</html>
